@@ -12,7 +12,7 @@ Modules are either
 ## Let's create a module
 
 1. In your current Terraform directory, create a folder called `vpc`
-2. Copy all file of your current terraform  working directory to the vpc folder and remove provider.tf
+2. Copy all file of your current terraform  working directory to the vpc folder and remove provider.tf, Makefile and terraform.tfvars
 3. Clean your current main.tf
 4. Create a module block
 ```hcl
