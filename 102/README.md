@@ -80,7 +80,7 @@ You have now created a geographically distributed network with a distinction bet
 
 # Now we are going to do the same with Terraform. Go to your Terraform codebase and add the following, and edit.
 
-```
+```hcl
 variable "network_name" {
   default = "myvpc"
 }
