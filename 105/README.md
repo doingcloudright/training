@@ -58,6 +58,7 @@ In the EC2 dashboard you wil now find your EC2 instance. You will see it has bot
 
 Take a look at your browser again. You will now be able to reach your instance ! 
 
-22. Destroy your instance!
+22. Destroy your instance, and security group!
 
 ## Terraform
+1. Take a look at the source folder, and implement this module in your own stack
