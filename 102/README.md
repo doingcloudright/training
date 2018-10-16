@@ -81,29 +81,103 @@ You have now created a geographically distributed network with a distinction bet
 # Now we are going to do the same with Terraform. Go to your Terraform codebase and add the following, and edit.
 
 ```
-module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+variable "network_name" {
+  default = "myvpc"
+}
 
-  name = "my-vpc"
-  cidr = "10.0.0.0/16"
+variable "network" {
+  default = "10.10.0.0/16"
+}
 
-  azs             = ["eu-west-1a", "eu-west-1b" ] <- According to your region
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+variable "availability_zones" {
+  default = ["eu-central-1a", "eu-central-1b"]
+}
 
-  enable_nat_gateway = false
-  enable_vpn_gateway = false
+variable "public_subnets" {
+  default = ["10.10.11.0/24", "10.10.12.0/24"]
+}
 
-  tags = {
-    Terraform = "true"
-    Environment = "Your Name"
+variable "private_subnets" {
+  default = ["10.10.4.0/24", "10.10.5.0/24"]
+}
+
+resource "aws_vpc" "vpc" {
+  cidr_block           = "${var.network}"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags {
+    Name = "${var.network_name}"
   }
 }
+
+resource "aws_subnet" "public" {
+  count             = "${length(var.public_subnets)}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${element(var.public_subnets, count.index)}"
+  availability_zone = "${element(var.availability_zones, count.index)}"
+
+  map_public_ip_on_launch = false
+
+  tags {
+    Name = "${var.network_name}-public-${count.index}"
+  }
+}
+
+resource "aws_subnet" "private" {
+  count             = "${length(var.private_subnets)}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${element(var.private_subnets, count.index)}"
+  availability_zone = "${element(var.availability_zones, count.index)}"
+
+  map_public_ip_on_launch = false
+
+  tags {
+    Name = "${var.network_name}-private-${count.index}"
+  }
+}
+
+resource "aws_internet_gateway" "internet_gateway" {
+  vpc_id = "${aws_vpc.vpc.id}"
+}
+
+resource "aws_route_table" "public" {
+  vpc_id = "${aws_vpc.vpc.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.internet_gateway.id}"
+  }
+
+  tags {
+    Name = "${var.network_name}-public"
+  }
+}
+
+resource "aws_route_table" "private" {
+  vpc_id = "${aws_vpc.vpc.id}"
+
+  tags {
+    Name = "${var.network_name}-private"
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  count          = "${length(var.public_subnets)}"
+  subnet_id      = "${element(aws_subnet.public.*.id, count.index)}"
+  route_table_id = "${aws_route_table.public.id}"
+}
+
+resource "aws_route_table_association" "private" {
+  count          = "${length(var.private_subnets)}"
+  subnet_id      = "${element(aws_subnet.private.*.id, count.index)}"
+  route_table_id = "${aws_route_table.private.id}"
+}
+➜ 
 ```
 
 
-1. Take a look at https://github.com/terraform-aws-modules/terraform-aws-vpc
-2. Run `make init` to make sure that the module is being sourced
-3. `make plan` will show you which resources are being created
-4. `make apply` 
-5. Check the VPC dashboard and see how it compares to what you did before
+1. Run `make init` to make sure that the module is being sourced
+2. `make plan` will show you which resources are being created
+3. `make apply` 
+4. Check the VPC dashboard and see how it compares to what you did before
