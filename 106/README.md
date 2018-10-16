@@ -42,6 +42,16 @@ echo "Hello World!" > /opt/bitnami/nginx/html/index.html
 12. For security group select the created webserver security Group
 13. Continue creation without a keypair
 
+## Create a Target Group
+
+"Target Groups for Your Application Load Balancers. Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and conditions. When a rule condition is met, traffic is forwarded to the corresponding target group."
+
+So to be able to route traffic from a load balancer to our Autoscaling Group we need to make a Target Group
+1. Go to the EC2 Dashboard
+2. Go to Target Groups
+3. Create Target Group
+Name: Webserver, select the proper VPC and click on Create
+
 ## Creating an Autoscaling Group
 1. Go to the EC2 Dashboard
 2. Go to Autoscaling Groups
@@ -49,8 +59,26 @@ echo "Hello World!" > /opt/bitnami/nginx/html/index.html
 4. Scroll Down and select the launch configuration you just made
 5. Name: Webserver-ASG
 6. Network: Your VPC
-7. Subnet: Select all Private Subnets!
-8. Click configure scaling policies
-9. Keep this group at its initial size
-10. Continue to tags: and Create your first Autoscaling Group
+7. Click Advanced and mark "Load Balancing" , "Receive traffic from one or more load balancers"
+8. At "Target Groups" Fill in your recently created Target Group
+9. Health Check Type: ELB
+10. Subnet: Select all Private Subnets!
+11. Click configure scaling policies
+12. Keep this group at its initial size
+13. Continue to tags where you put Name and Webserver: and Create your first Autoscaling Group
+13. After creation take a look in both the Autoscaling Group panel as well as the EC2 panel
+14. Terminate an instance created by the Autoscaling Group and see what happens on both panels
+
+## Creating a Load Balancer
+1. Go to the EC2 Dashboard
+2. Go to Load Balancers
+3. Click Create Load Balancer
+4. Click Create on the Application Load Balancer Create
+5. As Name type: ALB, internet-facing means the ALB is accessible from the internet and not internally
+6. Select your own VPC
+7. Availability Zones, Select All AZ's, and then all subnets tagged public
+8. Select Security Group, select the Security Group made for the Load Balancer
+9. At Configure Routing, select Existing Target Group, and consequently the one you have created ealieir
+10. At Register Targets one instance should already show up, continue with Review & Create!
+
 
