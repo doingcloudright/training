@@ -1,9 +1,16 @@
-# EC2 & Security Groups
 
-It's time to start running web applications. In this module we will
-* Learn what AMI's are
-* Learn what Security groups are
-* Run an EC2 instance with a security group applied, and use userdata to bootstrap the instance
+# Terraform And AWS Module (105)
+
+## Overview
+EC2 is how AWS started. In this module we go through a few of the resources which are available inside EC2. Security Groups, and EC2 instances.
+
+## Training Goals for this module
+Though this module we will learn:
+*  What an AMI is
+*  How to create a Security Group in the AWS Console
+*  How to create an instance based of an AMI
+*  How to use userdata to execute commands on the instance at boot-time
+*  How to use Terraform to achieve the exact same.
 
 
 ## What is a security group
