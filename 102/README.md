@@ -6,6 +6,9 @@ VPC,  Virtual Private Cloud, is currently the backbone of almost all components 
 ## Training Goals for this module
 Though this module we will learn:
 *  What the difference is between a Region and an Availability Zone
+*  What the difference is between an Internet Gateway and a NAT Gateway
+*  Why a distinction between private and public subnetting is important
+*  How routing works inside the VPC
 *  How redundant setups are spread across different availability zones.
 *  How to manually setup a VPC, subnets and an Internet Gateway
 *  How to use Terraform to accomplish the same thing
