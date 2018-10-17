@@ -1,3 +1,16 @@
+
+# Terraform And AWS Module (104)
+
+## Overview
+Terraform Modules are used to bundle terraform code and to make it easy to re-use them. Module code looks the same as regular terraform code. In this module you will see how to make a module and how to use it.
+
+## Training Goals for this module
+Though this module we will learn:
+*  The difference between a root module and another module
+*  How variables and outputs are used together with Modules
+
+
+
 # Terraform Modules & Output
 
 In most cases, AWS infastructure tend to exist out of many resources. To keep it DRY and to make it possible to re-use Terraform code over and over we use so called Terraform Modules.
