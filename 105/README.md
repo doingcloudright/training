@@ -56,7 +56,7 @@ echo "Hello World!" > /opt/bitnami/nginx/html/index.html
 16. review & launch & ignore the warning, continue & Launch
 17. Proceed without a keypair
 
-```In the EC2 dashboard you wil now find your EC2 instance. You will see it has both a private subnet IP address but also a IPv4 Public IP assigned. When the instance is done initializing, try to access the instance in your browser with that ip address.
+```In the EC2 dashboard you wil now find your EC2 instance. You will see it has both a private subnet IP address but also a IPv4 Public IP assigned. When the instance is done initializing, try to access the instance in your browser with that ip address.```
 
 18. That didn't work out right. Let's go back to security groups and add a rule for web traffic, port 80
 19. Go to Security Groups
