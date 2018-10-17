@@ -93,5 +93,15 @@ Name: Webserver, select the proper VPC and click on Create
 8. Select Security Group, select the Security Group made for the Load Balancer
 9. At Configure Routing, select Existing Target Group, and consequently the one you have created ealieir
 10. At Register Targets one instance should already show up, continue with Review & Create!
+11. Lookup the public dns name of the load balancer and visit it with your browser, you should see Hello World!
+12. Delete Everything you made in this module!
+
+# Terraform!
+
+## Adding the module
+In the source folder you will find a new module, take a look and see how the components relate to each other! Add the module to your source folder.
+* Looking at the variables defined in variables.tf figure out what the input is for this module
+* It might be that you need to add an output to your VPC module
+* Good luck!
 
 
