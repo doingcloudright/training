@@ -82,6 +82,10 @@ not straight away become a disaster. However, most instances do need internet ac
 7. Edit your private route table and add another route
 8. 0.0.0.0/0 with destination your recently create NAT gateway.
 
+## Elastic IP (EIP) Explained
+All AWS network components facing the internet are allocated an ipv4 adress dynamically. In some cases, in can be helpful to know that the address will never change. For this AWS provides Elastic IP addresses, they are addresses which will stay with the life AWS account as long as the developer does not disasociate the address.
+
+
 ## Done!
 
 You have now created a geographically distributed network with a distinction between public and private subnetting. Now we need to remove everything we made.
