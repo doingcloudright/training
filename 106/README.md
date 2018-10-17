@@ -3,7 +3,7 @@
 In this module you will learn
 * What autoscaling groups are
 * How they relate to a launch configuration
-* How to connect a Classic AWS Load balancer to an Autoscaling Group
+* How to connect an AWS Application Load balancer to an Autoscaling Group
 
 
 ## What is an Autoscaling Group
