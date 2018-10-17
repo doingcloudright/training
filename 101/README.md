@@ -1,4 +1,4 @@
-# Terraform Day One (101)
+# Terraform / AWS (101)
 
 ## Overview
 Terraform is a tool for provisioning infrastructure. It is a structured templating language that supports many different providers, not just AWS. As well as most resources for each provider. Because Terraform is open source, you can also create your own providers, and resources.
@@ -28,8 +28,6 @@ Though this workshop we will learn:
 *  How to add an S3 bucket
 *  The Terraform commands `plan`, `apply`, and `destroy`
 *  How Terraform tracks the state of its resources
-*  How to set up remote storage for Terraform states
-*  How to access the state information of one Terraform template, from another Terraform template.
 
 
 ### NOTE
