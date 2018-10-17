@@ -69,3 +69,13 @@ Take a look at your browser again. You will now be able to reach your instance !
 
 ## Terraform
 1. Take a look at the source folder, and implement this module in your own stack
+2. Add the module block to your root module like this
+```
+module "webserver" {
+  source    = "./webserver"
+  name      = "webserver"
+  vpc_id    = "${module.vpc.vpc_id}"
+  subnet_id = "${element(module.vpc.public_subnets_ids, 0)}"
+  user_data = "${file("${path.module}/cloud_init.init")}"
+}
+```
