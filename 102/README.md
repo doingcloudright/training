@@ -1,14 +1,24 @@
 # Terraform And AWS Module (102)
 
 ## Overview
+VPC,  Virtual Private Cloud, is currently the backbone of almost all components AWS has to offer. Just like with normal physical networks it has subnets and routing capabilities. 
+
+## Training Goals for this module
+Though this module we will learn:
+*  What the difference is between a Region and an Availability Zone
+*  How redundant setups are spread across different availability zones.
+*  How to manually setup a VPC, subnets and an Internet Gateway
+*  How to use Terraform to accomplish the same thing
+
+## VPC 
 The VPC ( Virtual Private Cloud ) defines a virtual network for Amazon resources to work in. As with all private networks they are limited to use private netting only. You can find a list of private networks here: https://en.wikipedia.org/wiki/Private_network . This course module covers the creation of a VPC with Terraform and helps to explain how the parts are working together.
 
-<img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/nat-gateway-diagram.png">
+<img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/nat-gateway-diagram.png"/>
 
 ## Regions and Availability zones
 Each AWS Region is a separate geographic area. Each AWS Region has multiple, isolated locations known as Availability Zones (AZs), they are different datacenters within one of those regions (https://wikileaks.org/amazon-atlas/). Resources aren't replicated across AWS Regions unless you do so specifically. Examples of regions are eu-west-1 (Ireland), us-east-1 ( Virginia ) and eu-central-1 (Frankfurt). Example of different AZs are eu-central-1a, eu-central-1b, eu-central-1c. The naming allocation of those availability zones is different per AWS customer, to make sure that the usage of Availability zones is evenly spread.
 
-https://filedb.experts-exchange.com/files/public/2015/8/30/e9d9aac8-3bfe-42d8-b115-f137b9c1140e.png
+<img src="https://filedb.experts-exchange.com/files/public/2015/8/30/e9d9aac8-3bfe-42d8-b115-f137b9c1140e.png"/>
 
 ## Manual Creation of a VPC
 
