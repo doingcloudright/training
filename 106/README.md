@@ -1,9 +1,18 @@
+## Overview
+A Single Instance as a production webserver will not provide an up-time guarantee one would need. Autoscaling Groups and Load Balancers come into play in this module. They are the tools which convert pets into cattle.
+
 # EC2 Autoscaling groups and Load Balancers
 
 In this module you will learn
-* What autoscaling groups are
+* The difference between Pets and Cattle
+* What autoscaling groups are ?
 * How they relate to a launch configuration
 * How to connect an AWS Application Load balancer to an Autoscaling Group
+* How to accomplish the same using Terraform
+
+## Pets vs Cattle
+
+This article describes it very well: https://medium.com/@Joachim8675309/devops-concepts-pets-vs-cattle-2380b5aab313 . Pet devops administration organises around servers with names which have a certain importance. If they suffer downtime, the problems caused by pets are enourmous. With Cattle, all servers are seen equal, and although the whole group of servers has importance, any of the seperate servers can be killed without major loss of uptime, preferably no downtime at all!
 
 
 ## What is an Autoscaling Group
