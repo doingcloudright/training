@@ -87,16 +87,55 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     ```bash
     aws-vault exec terraformrole -- aws s3 ls
     ```
-#### Example of a Terraform resource
-This is what a resource that creates an S3 bucket looks like:
-```hcl
-resource "aws_s3_bucket" "b" {
-  bucket_prefix = "new_bucket"
-}
-```
+
 ## Terraform formatting - to tidy up your code
 ```bash
 terraform fmt .
 ```
 If you use **[Visual Studio Code](https://code.visualstudio.com/download)** as your IDE then you can install the [Terraform Plugin](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) to get syntax highlighting, code completion, and automatic formatting on file save. It works on Mac, Linux, and Windows.
+
+
+## Terraform
+
+This source folder has three Terraform files. 
+*  [main.tf](./main.tf) 
+   Which contains the resource `aws_s3_bucket` that will be created.
+*  [variables.tf](./variables.tf)
+   Which as two variable declaration
+   -  `bucket_prefix` Which will hold the bucket name prefix that we will create
+   -  `region` Which will specify which region we will create the provider in, which also dictates where the S3 bucket will be created.
+*  [provider.tf](./provider.tf)
+   Which specifies details about the AWS provider, in this case I give it the the value of the `region` variable.
+
+In this directory is also a [Makefile](./Makefile) which I have created to simplify the running of commands.
+
+When using `aws-vault` to assume a profile and run `terraform` commands you need to normally type in:
+```bash
+aws-vault exec terraformrole -- terraform init
+aws-vault exec terraformrole -- terraform plan
+aws-vault exec terraformrole -- terraform apply
+```
+But with the `Makefile` you can just type:
+```bash
+make init
+make plan
+make apply
+```
+
+## Workshop guide
+*  Move the source code to your working directory from where you would like to work with Terraform
+*  run `make init` and see what the difference is in your folder, a .terraform folder has been created. Take a look at those files
+*  If you run `make plan` you will see that there will not be any actions, a difference vector is calculated and shown
+*  Now run `make apply` and fill in your name as bucket prefix
+*  Take another look at the .terraform folder and see how it changes
+*  When the apply completes you will be presented with the outputs, which you will see the full bucket name. 
+*  To check if the bucket was created, type:
+   `aws-vault exec terraformrole -- aws s3 ls`
+   Which will show a list of all your buckets, your bucket will start with `yourfirstname` and have a string of characters after it, such as `demo-oneHVHYNS87987JKJGHYFVJ8687687HJHB`
+   I have done this because S3 buckets must be globally unique in the world, and so I used `bucket_prefix` in the `aws_s3_bucket` resource to append a random string to the bucket name. You can set a specific name to a bucket by using `bucket` instead of `bucket_prefix`.
+*  This bucket will be used for the next demo, so don't destroy it just yet.
+You can read more about the `aws_s3_bucket` resource [here](https://www.terraform.io/docs/providers/aws/r/s3_bucket.html)
+To remove the bucket in the end of all demos type `make destroy`
+* Now take another look at the .terraform folder
+
 
