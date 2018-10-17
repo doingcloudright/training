@@ -1,7 +1,7 @@
 # Terraform And AWS Module (102)
 
 ## Overview
-VPC,  Virtual Private Cloud, is currently the backbone of almost all components AWS has to offer. Just like with normal physical networks it has subnets and routing capabilities. 
+The VPC ( Virtual Private Cloud ) defines a virtual network for Amazon resources to work in. As with all private networks they are limited to use private netting only. You can find a list of private networks here: https://en.wikipedia.org/wiki/Private_network . This course module covers the creation of a VPC with Terraform and helps to explain how the parts are working together.
 
 ## Training Goals for this module
 Though this module we will learn:
@@ -13,9 +13,7 @@ Though this module we will learn:
 *  How to manually setup a VPC, subnets and an Internet Gateway
 *  How to use Terraform to accomplish the same thing
 
-## VPC 
-The VPC ( Virtual Private Cloud ) defines a virtual network for Amazon resources to work in. As with all private networks they are limited to use private netting only. You can find a list of private networks here: https://en.wikipedia.org/wiki/Private_network . This course module covers the creation of a VPC with Terraform and helps to explain how the parts are working together.
-
+## Graphical overview of a VPC in action 
 <img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/nat-gateway-diagram.png"/>
 
 ## Regions and Availability zones
