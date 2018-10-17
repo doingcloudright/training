@@ -14,6 +14,9 @@ In this module you will learn
 
 This article describes it very well: https://medium.com/@Joachim8675309/devops-concepts-pets-vs-cattle-2380b5aab313 . Pet devops administration organises around servers with names which have a certain importance. If they suffer downtime, the problems caused by pets are enourmous. With Cattle, all servers are seen equal, and although the whole group of servers has importance, any of the seperate servers can be killed without major loss of uptime, preferably no downtime at all!
 
+## Graph Overview
+
+<img src="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/images/component_architecture.png"/>
 
 ## What is an Autoscaling Group
 
