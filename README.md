@@ -2,7 +2,7 @@
 
 ## 101
 
-This introductory module starts of with setting up Terraform and other tools on your workstation. With help of a Makefile, Terraform will be instructed to create a S3 Bucket. H/T to https://github.com/Jamie-BitFlight for providing this module.
+This introductory module starts of with setting up Terraform and aws-vault on your workstation. With help of a Makefile, Terraform will be instructed to create a S3 Bucket. H/T to https://github.com/Jamie-BitFlight for providing this module.
 
 ## 102
 
