@@ -32,6 +32,7 @@ A launch configuration cannot be modified once it's made. To make changes a new 
 # Create Two security groups
 1. Create one security Group called loadbalancer, and allow port 80 public to 0.0.0.0/0
 2. Create one another security group called webserver, and allow port 80 from the loadbalancer SG
+* Instead of typing an ip range, the source can just as well be another Security Group.
 
 ## Creating a Launch Configuration
 1. Go to the EC2 Dashboard
