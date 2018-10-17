@@ -64,9 +64,9 @@ In the following step we will make sure that the public subnet can access the in
 
 1. Go to Internet Gateways and click "Create Internet Gateway", give it a nice name and create it
 2. In the overview you will see that the gatway has as state 'detached'. Select it and attach the gateway to your VPC.
-3. Go back to route tables, to the public table and edit the routes, click Add another Route.
+3. Go back to route tables, to the public table and edit the routes, click Add another Route.  
 4. As destination fill in the network 0.0.0.0/0 with as target the internet gateway you made, press Save.
-4a. 0.0.0.0/0 is also called default, or everything else, meaning that if traffic has not matched any other routes it will fallback to this route.
+*  0.0.0.0/0 is also called default, or everything else, meaning that if traffic has not matched any other routes it will fallback to this route.  
 5. In the overview you will now see your route to the internet gateway.
 
 
