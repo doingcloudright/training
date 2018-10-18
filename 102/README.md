@@ -154,6 +154,9 @@ resource "aws_subnet" "private" {
 
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = "${aws_vpc.vpc.id}"
+  tags {
+    Name = "${var.network_name}-igw"
+  }
 }
 
 resource "aws_route_table" "public" {
