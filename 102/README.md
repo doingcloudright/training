@@ -108,6 +108,7 @@ variable "network" {
 }
 
 variable "availability_zones" {
+  type    = "list"
   default = ["eu-central-1a", "eu-central-1b"]
 }
 
