@@ -1,7 +1,3 @@
-variable "region" {
-  description = "What region should the provider be in."
-}
-
 variable "network_name" {
   description = "What is the name of the network"
 }
@@ -11,16 +7,16 @@ variable "network" {
 }
 
 variable "availability_zones" {
-  type = "list"
+  type        = "list"
   description = "Which availability zones do we map our subnets to"
 }
 
 variable "public_subnets" {
-  type = "list"
+  type        = "list"
   description = "CIDRs of the public subnet"
 }
 
 variable "private_subnets" {
-  type = "list"
+  type        = "list"
   description = "CIDRs of the private subnet"
 }
