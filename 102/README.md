@@ -93,7 +93,10 @@ You have now created a geographically distributed network with a distinction bet
 2. Go to Elastic IPs and disasociate the address
 
 
-# Now we are going to do the same with Terraform. Go to your Terraform codebase and add the following, and edit.
+# Now we are going to do the same with Terraform. 
+1. Go to your Terraform codebase
+2. Remove everything related to s3 bucket
+3. Add the following terraform code to your main.tf
 
 ```hcl
 variable "network_name" {
