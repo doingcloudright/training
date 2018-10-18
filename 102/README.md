@@ -113,7 +113,7 @@ variable "public_subnets" {
 }
 
 variable "private_subnets" {
-  default = ["10.10.4.0/24", "10.10.5.0/24"]
+  default = ["10.10.21.0/24", "10.10.22.0/24"]
 }
 
 resource "aws_vpc" "vpc" {
