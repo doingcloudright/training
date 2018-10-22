@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Hello World!" > /opt/bitnami/nginx/html/index.html
