@@ -11,16 +11,24 @@ variable "vpc_id" {
   description = "The VPC ID"
 }
 
-variable "public_subnets" {
+variable "lb_subnets" {
   description = "The public subnets, where the loadbalancer should reside"
+  type        = "list"
   default     = []
 }
 
-variable "private_subnets" {
+variable "instance_subnets" {
   description = "The private subnets, where the loadbalancer should reside"
+  type        = "list"
   default     = []
 }
 
-variable "user_data" {
-  description = "The cloud init user-data for the instance"
+variable "key_name" {
+  description = "The SSH KEY reference"
+  type        = "string"
+}
+
+variable "associate_public_ip_address" {
+  description = "Do we want to have a public IP for this instance"
+  default     = false
 }

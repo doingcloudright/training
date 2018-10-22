@@ -99,9 +99,49 @@ Name: Webserver, select the proper VPC and click on Create
 # Terraform!
 
 ## Adding the module
+
+Let's replace your VPC module with the following code block, and also create a keypair with your public key:
+
+```
+ module "vpc" {
+    source  = "terraform-aws-modules/vpc/aws"
+    version = "1.37.0"
+
+    name = "${var.network_name}-vpc"
+    cidr = "${var.network}"
+
+    azs             = ["${var.availability_zones}"]
+    public_subnets  = ["${var.public_subnets}"]
+    private_subnets = ["${var.private_subnets}"]
+
+    single_nat_gateway = true
+
+    enable_nat_gateway = true
+    enable_vpn_gateway = false
+
+    tags = {
+      Terraform   = "true"
+      Environment = "${terraform.workspace}"
+    }
+  }
+
+```
+1. run make apply!
+2. Take another look at the VPC dashboard and take a look at the routing tables
+
+```
+Now add the following, grab the cattle module from GIT
+  resource "aws_key_pair" "key" {
+    public_key = "YOUR_PUB_KEY"
+  }
+
+  # This module is not yet filled in completely
+  module "cattle" {
+    source           = "./cattle-webservers/"
+    name             = "webserver"
+  }
+```
+
 In the source folder you will find a new module, take a look and see how the components relate to each other! Add the module to your source folder.
 * Looking at the variables defined in variables.tf figure out what the input is for this module
-* It might be that you need to add an output to your VPC module
 * Good luck!
-
-
