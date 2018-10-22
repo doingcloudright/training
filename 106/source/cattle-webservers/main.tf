@@ -109,10 +109,6 @@ data "aws_ami" "bitnami" {
 
 data "template_file" "init" {
   template = "${file("${path.module}/cloud_init.init")}"
-
-  vars {
-    bucket_name = "${aws_s3_bucket.bucket.id}"
-  }
 }
 
 ## Creating Launch Configuration
