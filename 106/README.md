@@ -126,7 +126,7 @@ Let's replace your VPC module with the following code block, and also create a k
   }
 
 ```
-1. run make apply!
+1. run make init and make apply!
 2. Take another look at the VPC dashboard and take a look at the routing tables
 
 ```
